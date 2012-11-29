@@ -1,6 +1,7 @@
 require 'bundler/capistrano'
 require 'rvm/capistrano'
 
+load 'deploy/assets'
 load 'config/recipes/base'
 load 'config/recipes/nginx'
 load 'config/recipes/unicorn'
@@ -25,6 +26,7 @@ set :rvm_ruby_string, "1.9.3@#{application}"
 set :rvm_type, :system
 
 set :nginx_domains, "localhost"
+set :normalize_asset_timestamps, false
 
 after "deploy", "unicorn:stop_old"
 
